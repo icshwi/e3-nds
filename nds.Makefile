@@ -36,145 +36,15 @@ APPSRC:=$(APP)/src
 
 asyn_VERSION:=4270
 
+# Exclude linux-ppc64e6500
+# Our current toolchain doesn't have boost
+# 
+EXCLUDE_ARCHS = linux-ppc64e6500
+
 # USR_INCLUDES += -I$(where_am_I)$(APPSRC)
 
-# USR_CFLAGS   += -Wno-unused-variable
-# USR_CFLAGS   += -Wno-unused-function
-# USR_CFLAGS   += -Wno-unused-but-set-variable
-# USR_CPPFLAGS += -Wno-unused-variable
-# USR_CPPFLAGS += -Wno-unused-function
-# USR_CPPFLAGS += -Wno-unused-but-set-variable
 
-# TEMPLATES += $(wildcard $(APPDB)/*.db)
-
-# DBDINC_SRCS += $(APPSRC)/swaitRecord.c
-# DBDINC_SRCS += $(APPSRC)/sseqRecord.c
-# DBDINC_SRCS += $(APPSRC)/aCalcoutRecord.c
-# DBDINC_SRCS += $(APPSRC)/sCalcoutRecord.c
-# DBDINC_SRCS += $(APPSRC)/transformRecord.c
-
-# DBDINC_DBDS = $(subst .c,.dbd,   $(DBDINC_SRCS:$(APPSRC)/%=%))
-# DBDINC_HDRS = $(subst .c,.h,     $(DBDINC_SRCS:$(APPSRC)/%=%))
-# DBDINC_DEPS = $(subst .c,$(DEP), $(DBDINC_SRCS:$(APPSRC)/%=%))
-
-HEADERS += ${APPSRC}/map_functors.h
-HEADERS += ${APPSRC}/ndsAbstractStateMachine.h
-SOURCES += ${APPSRC}/ndsADIOChannel.cpp
-HEADERS += ${APPSRC}/ndsADIOChannel.h
-SOURCES += ${APPSRC}/ndsAsynDriver.cpp
-HEADERS += ${APPSRC}/ndsAsynDriver.h
-HEADERS += ${APPSRC}/ndsAsynMacro.h
-SOURCES += ${APPSRC}/ndsAutoChannelGroup.cpp
-HEADERS += ${APPSRC}/ndsAutoChannelGroup.h
-SOURCES += ${APPSRC}/ndsBaseChannel.cpp
-HEADERS += ${APPSRC}/ndsBaseChannel.h
-SOURCES += ${APPSRC}/ndsBase.cpp
-HEADERS += ${APPSRC}/ndsBase.h
-SOURCES += ${APPSRC}/ndsBaseTask.cpp
-HEADERS += ${APPSRC}/ndsBaseTask.h
-HEADERS += ${APPSRC}/ndsBuffer.h
-SOURCES += ${APPSRC}/ndsChannel.cpp
-SOURCES += ${APPSRC}/ndsChannelGroup.cpp
-HEADERS += ${APPSRC}/ndsChannelGroup.h
-HEADERS += ${APPSRC}/ndsChannel.h
-SOURCES += ${APPSRC}/ndsChannelStateMachine.cpp
-HEADERS += ${APPSRC}/ndsChannelStateMachine.h
-HEADERS += ${APPSRC}/ndsChannelStates.h
-HEADERS += ${APPSRC}/ndsChannelTemplate.h
-SOURCES += ${APPSRC}/ndsClock.cpp
-HEADERS += ${APPSRC}/ndsClock.h
-SOURCES += ${APPSRC}/ndsDebug.cpp
-HEADERS += ${APPSRC}/ndsDebug.h
-SOURCES += ${APPSRC}/ndsDevice.cpp
-HEADERS += ${APPSRC}/ndsDevice.h
-SOURCES += ${APPSRC}/ndsDeviceStateMachine.cpp
-HEADERS += ${APPSRC}/ndsDeviceStateMachine.h
-HEADERS += ${APPSRC}/ndsDeviceStates.h
-SOURCES += ${APPSRC}/ndsDeviceTemplate.cpp
-HEADERS += ${APPSRC}/ndsDeviceTemplate.h
-SOURCES += ${APPSRC}/ndsDriverCommand.cpp
-HEADERS += ${APPSRC}/ndsDriverCommand.h
-HEADERS += ${APPSRC}/ndsDriver.h
-SOURCES += ${APPSRC}/ndsFileDescriptor.cpp
-HEADERS += ${APPSRC}/ndsFileDescriptor.h
-SOURCES += ${APPSRC}/ndsFirmware.cpp
-HEADERS += ${APPSRC}/ndsFirmware.h
-SOURCES += ${APPSRC}/ndsImageChannel.cpp
-HEADERS += ${APPSRC}/ndsImageChannel.h
-SOURCES += ${APPSRC}/ndsIOC.cpp
-HEADERS += ${APPSRC}/ndsIOC.h
-SOURCES += ${APPSRC}/ndsLockKeeper.cpp
-HEADERS += ${APPSRC}/ndsLockKeeper.h
-HEADERS += ${APPSRC}/ndsMacro.h
-SOURCES += ${APPSRC}/ndsManager.cpp
-HEADERS += ${APPSRC}/ndsManager.h
-SOURCES += ${APPSRC}/ndsMessage.cpp
-HEADERS += ${APPSRC}/ndsMessage.h
-#SOURCES += ${APPSRC}/ndsNDArrayChannel.cpp
-#HEADERS += ${APPSRC}/ndsNDArrayChannel.h
-SOURCES += ${APPSRC}/ndsPeriodicTask.cpp
-HEADERS += ${APPSRC}/ndsPeriodicTask.h
-SOURCES += ${APPSRC}/ndsPollingTask.cpp
-HEADERS += ${APPSRC}/ndsPollingTask.h
-SOURCES += ${APPSRC}/ndsPulse.cpp
-HEADERS += ${APPSRC}/ndsPulse.h
-HEADERS += ${APPSRC}/ndsPVContainer.h
-HEADERS += ${APPSRC}/ndsPV.h
-#HEADERS += ${APPSRC}/ndsRegisterHandlersCaller.hpp
-SOURCES += ${APPSRC}/ndsTaskManager.cpp
-HEADERS += ${APPSRC}/ndsTaskManager.h
-SOURCES += ${APPSRC}/ndsTaskService.cpp
-HEADERS += ${APPSRC}/ndsTaskService.h
-SOURCES += ${APPSRC}/ndsTerminal.cpp
-HEADERS += ${APPSRC}/ndsTerminal.h
-SOURCES += ${APPSRC}/ndsThread.cpp
-HEADERS += ${APPSRC}/ndsThread.h
-SOURCES += ${APPSRC}/ndsThreadTask.cpp
-HEADERS += ${APPSRC}/ndsThreadTask.h
-SOURCES += ${APPSRC}/ndsTimeEvent.cpp
-HEADERS += ${APPSRC}/ndsTimeEvent.h
-SOURCES += ${APPSRC}/ndsTimer.cpp
-HEADERS += ${APPSRC}/ndsTimer.h
-SOURCES += ${APPSRC}/ndsTriggerCondition.cpp
-HEADERS += ${APPSRC}/ndsTriggerCondition.h
-SOURCES += ${APPSRC}/ndsTrigger.cpp
-HEADERS += ${APPSRC}/ndsTrigger.h
-HEADERS += ${APPSRC}/ndsTypeLists.h
-HEADERS += ${APPSRC}/ndsTypes.h
-HEADERS += ${APPSRC}/singleton.h
-SOURCES += ${APPSRC}/utsBufferTools.cpp
-HEADERS += ${APPSRC}/utsBufferTools.h
-
-
-# # DBDINC_SRCS should be last of the series of SOURCES
-# SOURCES += $(DBDINC_SRCS)
-
-# DBDS += $(APPSRC)/calcSupport_LOCAL.dbd
-# DBDS += $(APPSRC)/calcSupport_withSNCSEQ.dbd
-# DBDS += $(APPSRC)/calcSupport_withSSCAN.dbd
-
-#
-# $(DBDINC_DEPS): $(DBDINC_HDRS)
-#
-# .dbd.h:
-# 	$(DBTORECORDTYPEH)  $(USR_DBDFLAGS) -o $@ $<
-#
-# .PHONY: $(DBDINC_DEPS) .dbd.h
-#
-#
-# The following lines could be useful if one uses the external lib
-#
-# Examples...
-# 
-# USR_CFLAGS += -fPIC
-# USR_CFLAGS   += -DDEBUG_PRINT
-# USR_CPPFLAGS += -DDEBUG_PRINT
-# USR_CPPFLAGS += -DUSE_TYPED_RSET
 USR_INCLUDES += -I/usr/include/libxml2
-# USR_LDFLAGS += -lusb-1.0
-# USR_LDFLAGS += -L /opt/etherlab/lib
-# USR_LDFLAGS += -lethercat
-# USR_LDFLAGS += -Wl,-rpath=/opt/etherlab/lib
 
 ## SYSTEM LIBS 
 ##
@@ -183,6 +53,184 @@ USR_LIBS += curl
 USR_LIBS += xml2
 
 #
+
+HEADERS += ${APPSRC}/ndsIOC.h
+HEADERS += ${APPSRC}/ndsImageChannel.h
+HEADERS += ${APPSRC}/ndsADIOChannel.h
+HEADERS += ${APPSRC}/ndsChannel.h
+HEADERS += ${APPSRC}/ndsManager.h
+HEADERS += ${APPSRC}/ndsDeviceStates.h
+HEADERS += ${APPSRC}/ndsChannelStates.h
+HEADERS += ${APPSRC}/ndsChannelGroup.h
+HEADERS += ${APPSRC}/ndsBase.h
+HEADERS += ${APPSRC}/ndsPVContainer.h
+HEADERS += ${APPSRC}/ndsDriver.h
+HEADERS += ${APPSRC}/ndsDevice.h
+HEADERS += ${APPSRC}/ndsMacro.h
+HEADERS += ${APPSRC}/ndsBaseChannel.h
+HEADERS += ${APPSRC}/ndsAbstractStateMachine.h
+HEADERS += ${APPSRC}/ndsChannelStateMachine.h
+HEADERS += ${APPSRC}/ndsDeviceStateMachine.h
+HEADERS += ${APPSRC}/ndsAsynMacro.h
+HEADERS += ${APPSRC}/ndsAsynDriver.h
+HEADERS += ${APPSRC}/ndsTypes.h
+HEADERS += ${APPSRC}/ndsDebug.h
+HEADERS += ${APPSRC}/singleton.h
+HEADERS += ${APPSRC}/ndsPV.h
+HEADERS += ${APPSRC}/ndsTypeLists.h
+HEADERS += ${APPSRC}/ndsMessage.h
+HEADERS += ${APPSRC}/map_functors.h
+HEADERS += ${APPSRC}/ndsChannelTemplate.h
+HEADERS += ${APPSRC}/ndsFirmware.h
+HEADERS += ${APPSRC}/ndsTrigger.h
+HEADERS += ${APPSRC}/ndsTriggerCondition.h
+HEADERS += ${APPSRC}/utsBufferTools.h
+HEADERS += ${APPSRC}/ndsDriverCommand.h
+HEADERS += ${APPSRC}/ndsTerminal.h
+HEADERS += ${APPSRC}/ndsTimeEvent.h
+HEADERS += ${APPSRC}/ndsPulse.h
+HEADERS += ${APPSRC}/ndsClock.h
+HEADERS += ${APPSRC}/ndsLockKeeper.h
+HEADERS += ${APPSRC}/ndsAutoChannelGroup.h
+#HEADERS += ${APPSRC}/ndsRegisterHandlersCaller.hpp
+
+HEADERS += ${APPSRC}/ndsBaseTask.h
+HEADERS += ${APPSRC}/ndsTaskService.h
+HEADERS += ${APPSRC}/ndsTaskManager.h
+HEADERS += ${APPSRC}/ndsTimer.h
+HEADERS += ${APPSRC}/ndsThread.h
+HEADERS += ${APPSRC}/ndsThreadTask.h
+HEADERS += ${APPSRC}/ndsPeriodicTask.h
+HEADERS += ${APPSRC}/ndsPollingTask.h
+HEADERS += ${APPSRC}/ndsFileDescriptor.h
+
+
+SOURCES += ${APPSRC}/ndsManager.cpp
+SOURCES += ${APPSRC}/ndsBase.cpp
+SOURCES += ${APPSRC}/ndsDevice.cpp
+SOURCES += ${APPSRC}/ndsChannel.cpp
+SOURCES += ${APPSRC}/ndsChannelGroup.cpp
+SOURCES += ${APPSRC}/ndsAsynDriver.cpp
+SOURCES += ${APPSRC}/ndsBaseChannel.cpp
+
+SOURCES += ${APPSRC}/ndsChannelStateMachine.cpp
+SOURCES += ${APPSRC}/ndsDeviceStateMachine.cpp
+SOURCES += ${APPSRC}/ndsADIOChannel.cpp
+SOURCES += ${APPSRC}/ndsImageChannel.cpp
+SOURCES += ${APPSRC}/ndsMessage.cpp
+SOURCES += ${APPSRC}/ndsDebug.cpp
+SOURCES += ${APPSRC}/ndsFirmware.cpp
+SOURCES += ${APPSRC}/ndsTrigger.cpp
+SOURCES += ${APPSRC}/ndsTriggerCondition.cpp
+SOURCES += ${APPSRC}/ndsTimeEvent.cpp
+SOURCES += ${APPSRC}/ndsPulse.cpp
+SOURCES += ${APPSRC}/ndsClock.cpp
+SOURCES += ${APPSRC}/ndsTerminal.cpp
+SOURCES += ${APPSRC}/ndsDriverCommand.cpp
+SOURCES += ${APPSRC}/ndsLockKeeper.cpp
+SOURCES += ${APPSRC}/ndsAutoChannelGroup.cpp
+
+SOURCES += ${APPSRC}/ndsBaseTask.cpp
+SOURCES += ${APPSRC}/ndsTaskService.cpp
+SOURCES += ${APPSRC}/ndsTaskManager.cpp
+SOURCES += ${APPSRC}/ndsTimer.cpp
+
+SOURCES += ${APPSRC}/ndsThread.cpp
+SOURCES += ${APPSRC}/ndsThreadTask.cpp
+SOURCES += ${APPSRC}/ndsPeriodicTask.cpp
+SOURCES += ${APPSRC}/ndsPollingTask.cpp
+SOURCES += ${APPSRC}/ndsFileDescriptor.cpp
+
+
+# HEADERS += ${APPSRC}/map_functors.h
+# HEADERS += ${APPSRC}/ndsAbstractStateMachine.h
+# SOURCES += ${APPSRC}/ndsADIOChannel.cpp
+# HEADERS += ${APPSRC}/ndsADIOChannel.h
+# SOURCES += ${APPSRC}/ndsAsynDriver.cpp
+# HEADERS += ${APPSRC}/ndsAsynDriver.h
+# HEADERS += ${APPSRC}/ndsAsynMacro.h
+# SOURCES += ${APPSRC}/ndsAutoChannelGroup.cpp
+# HEADERS += ${APPSRC}/ndsAutoChannelGroup.h
+# SOURCES += ${APPSRC}/ndsBaseChannel.cpp
+# HEADERS += ${APPSRC}/ndsBaseChannel.h
+# SOURCES += ${APPSRC}/ndsBase.cpp
+# HEADERS += ${APPSRC}/ndsBase.h
+# SOURCES += ${APPSRC}/ndsBaseTask.cpp
+# HEADERS += ${APPSRC}/ndsBaseTask.h
+# HEADERS += ${APPSRC}/ndsBuffer.h
+# SOURCES += ${APPSRC}/ndsChannel.cpp
+# SOURCES += ${APPSRC}/ndsChannelGroup.cpp
+# HEADERS += ${APPSRC}/ndsChannelGroup.h
+# HEADERS += ${APPSRC}/ndsChannel.h
+# SOURCES += ${APPSRC}/ndsChannelStateMachine.cpp
+# HEADERS += ${APPSRC}/ndsChannelStateMachine.h
+# HEADERS += ${APPSRC}/ndsChannelStates.h
+# HEADERS += ${APPSRC}/ndsChannelTemplate.h
+# SOURCES += ${APPSRC}/ndsClock.cpp
+# HEADERS += ${APPSRC}/ndsClock.h
+# SOURCES += ${APPSRC}/ndsDebug.cpp
+# HEADERS += ${APPSRC}/ndsDebug.h
+# SOURCES += ${APPSRC}/ndsDevice.cpp
+# HEADERS += ${APPSRC}/ndsDevice.h
+# SOURCES += ${APPSRC}/ndsDeviceStateMachine.cpp
+# HEADERS += ${APPSRC}/ndsDeviceStateMachine.h
+# HEADERS += ${APPSRC}/ndsDeviceStates.h
+# SOURCES += ${APPSRC}/ndsDeviceTemplate.cpp
+# HEADERS += ${APPSRC}/ndsDeviceTemplate.h
+# SOURCES += ${APPSRC}/ndsDriverCommand.cpp
+# HEADERS += ${APPSRC}/ndsDriverCommand.h
+# HEADERS += ${APPSRC}/ndsDriver.h
+# SOURCES += ${APPSRC}/ndsFileDescriptor.cpp
+# HEADERS += ${APPSRC}/ndsFileDescriptor.h
+# SOURCES += ${APPSRC}/ndsFirmware.cpp
+# HEADERS += ${APPSRC}/ndsFirmware.h
+# SOURCES += ${APPSRC}/ndsImageChannel.cpp
+# HEADERS += ${APPSRC}/ndsImageChannel.h
+# SOURCES += ${APPSRC}/ndsIOC.cpp
+# HEADERS += ${APPSRC}/ndsIOC.h
+# SOURCES += ${APPSRC}/ndsLockKeeper.cpp
+# HEADERS += ${APPSRC}/ndsLockKeeper.h
+# HEADERS += ${APPSRC}/ndsMacro.h
+# SOURCES += ${APPSRC}/ndsManager.cpp
+# HEADERS += ${APPSRC}/ndsManager.h
+# SOURCES += ${APPSRC}/ndsMessage.cpp
+# HEADERS += ${APPSRC}/ndsMessage.h
+# #SOURCES += ${APPSRC}/ndsNDArrayChannel.cpp
+# #HEADERS += ${APPSRC}/ndsNDArrayChannel.h
+# SOURCES += ${APPSRC}/ndsPeriodicTask.cpp
+# HEADERS += ${APPSRC}/ndsPeriodicTask.h
+# SOURCES += ${APPSRC}/ndsPollingTask.cpp
+# HEADERS += ${APPSRC}/ndsPollingTask.h
+# SOURCES += ${APPSRC}/ndsPulse.cpp
+# HEADERS += ${APPSRC}/ndsPulse.h
+# HEADERS += ${APPSRC}/ndsPVContainer.h
+# HEADERS += ${APPSRC}/ndsPV.h
+# #HEADERS += ${APPSRC}/ndsRegisterHandlersCaller.hpp
+# SOURCES += ${APPSRC}/ndsTaskManager.cpp
+# HEADERS += ${APPSRC}/ndsTaskManager.h
+# SOURCES += ${APPSRC}/ndsTaskService.cpp
+# HEADERS += ${APPSRC}/ndsTaskService.h
+# SOURCES += ${APPSRC}/ndsTerminal.cpp
+# HEADERS += ${APPSRC}/ndsTerminal.h
+# SOURCES += ${APPSRC}/ndsThread.cpp
+# HEADERS += ${APPSRC}/ndsThread.h
+# SOURCES += ${APPSRC}/ndsThreadTask.cpp
+# HEADERS += ${APPSRC}/ndsThreadTask.h
+# SOURCES += ${APPSRC}/ndsTimeEvent.cpp
+# HEADERS += ${APPSRC}/ndsTimeEvent.h
+# SOURCES += ${APPSRC}/ndsTimer.cpp
+# HEADERS += ${APPSRC}/ndsTimer.h
+# SOURCES += ${APPSRC}/ndsTriggerCondition.cpp
+# HEADERS += ${APPSRC}/ndsTriggerCondition.h
+# SOURCES += ${APPSRC}/ndsTrigger.cpp
+# HEADERS += ${APPSRC}/ndsTrigger.h
+# HEADERS += ${APPSRC}/ndsTypeLists.h
+# HEADERS += ${APPSRC}/ndsTypes.h
+# HEADERS += ${APPSRC}/singleton.h
+# SOURCES += ${APPSRC}/utsBufferTools.cpp
+# HEADERS += ${APPSRC}/utsBufferTools.h
+
+
 
 ## This RULE should be used in case of inflating DB files 
 ## db rule is the default in RULES_DB, so add the empty one
