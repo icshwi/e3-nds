@@ -1,0 +1,4 @@
+[submodule "m-epics-nds"]
+	path = m-epics-nds
+	url = https://bitbucket.org/europeanspallationsource/m-epics-nds
+	ignore = all

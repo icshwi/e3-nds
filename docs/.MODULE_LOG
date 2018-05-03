@@ -1,0 +1,12 @@
+USER : joaopaulomartins
+TIME : 2018May03-0959-51CEST
+>> 
+EPICS_MODULE_NAME  :                                                           nds
+E3_MODULE_SRC_PATH :                                                   m-epics-nds
+EPICS_MODULE_URL   :                https://bitbucket.org/europeanspallationsource
+E3_TARGET_URL      :                                     https://github.com/icshwi
+>> 
+e3 module name     :                                                        e3-nds
+e3 module url full :    https://bitbucket.org/europeanspallationsource/m-epics-nds
+e3 target url full :                              https://github.com/icshwi/e3-nds
+>> 
