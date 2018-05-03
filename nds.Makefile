@@ -29,10 +29,12 @@
 
 include $(E3_REQUIRE_TOOLS)/driver.makefile
 
-# APP:=calcApp
+APP:=epics-nds/ndsApp
 # APPDB:=$(APP)/Db
-# APPSRC:=$(APP)/src
+APPSRC:=$(APP)/src
 
+
+asyn_VERSION:=4270
 
 # USR_INCLUDES += -I$(where_am_I)$(APPSRC)
 
@@ -55,27 +57,95 @@ include $(E3_REQUIRE_TOOLS)/driver.makefile
 # DBDINC_HDRS = $(subst .c,.h,     $(DBDINC_SRCS:$(APPSRC)/%=%))
 # DBDINC_DEPS = $(subst .c,$(DEP), $(DBDINC_SRCS:$(APPSRC)/%=%))
 
+HEADERS += ${APPSRC}/map_functors.h
+HEADERS += ${APPSRC}/ndsAbstractStateMachine.h
+SOURCES += ${APPSRC}/ndsADIOChannel.cpp
+HEADERS += ${APPSRC}/ndsADIOChannel.h
+SOURCES += ${APPSRC}/ndsAsynDriver.cpp
+HEADERS += ${APPSRC}/ndsAsynDriver.h
+HEADERS += ${APPSRC}/ndsAsynMacro.h
+SOURCES += ${APPSRC}/ndsAutoChannelGroup.cpp
+HEADERS += ${APPSRC}/ndsAutoChannelGroup.h
+SOURCES += ${APPSRC}/ndsBaseChannel.cpp
+HEADERS += ${APPSRC}/ndsBaseChannel.h
+SOURCES += ${APPSRC}/ndsBase.cpp
+HEADERS += ${APPSRC}/ndsBase.h
+SOURCES += ${APPSRC}/ndsBaseTask.cpp
+HEADERS += ${APPSRC}/ndsBaseTask.h
+HEADERS += ${APPSRC}/ndsBuffer.h
+SOURCES += ${APPSRC}/ndsChannel.cpp
+SOURCES += ${APPSRC}/ndsChannelGroup.cpp
+HEADERS += ${APPSRC}/ndsChannelGroup.h
+HEADERS += ${APPSRC}/ndsChannel.h
+SOURCES += ${APPSRC}/ndsChannelStateMachine.cpp
+HEADERS += ${APPSRC}/ndsChannelStateMachine.h
+HEADERS += ${APPSRC}/ndsChannelStates.h
+HEADERS += ${APPSRC}/ndsChannelTemplate.h
+SOURCES += ${APPSRC}/ndsClock.cpp
+HEADERS += ${APPSRC}/ndsClock.h
+SOURCES += ${APPSRC}/ndsDebug.cpp
+HEADERS += ${APPSRC}/ndsDebug.h
+SOURCES += ${APPSRC}/ndsDevice.cpp
+HEADERS += ${APPSRC}/ndsDevice.h
+SOURCES += ${APPSRC}/ndsDeviceStateMachine.cpp
+HEADERS += ${APPSRC}/ndsDeviceStateMachine.h
+HEADERS += ${APPSRC}/ndsDeviceStates.h
+SOURCES += ${APPSRC}/ndsDeviceTemplate.cpp
+HEADERS += ${APPSRC}/ndsDeviceTemplate.h
+SOURCES += ${APPSRC}/ndsDriverCommand.cpp
+HEADERS += ${APPSRC}/ndsDriverCommand.h
+HEADERS += ${APPSRC}/ndsDriver.h
+SOURCES += ${APPSRC}/ndsFileDescriptor.cpp
+HEADERS += ${APPSRC}/ndsFileDescriptor.h
+SOURCES += ${APPSRC}/ndsFirmware.cpp
+HEADERS += ${APPSRC}/ndsFirmware.h
+SOURCES += ${APPSRC}/ndsImageChannel.cpp
+HEADERS += ${APPSRC}/ndsImageChannel.h
+SOURCES += ${APPSRC}/ndsIOC.cpp
+HEADERS += ${APPSRC}/ndsIOC.h
+SOURCES += ${APPSRC}/ndsLockKeeper.cpp
+HEADERS += ${APPSRC}/ndsLockKeeper.h
+HEADERS += ${APPSRC}/ndsMacro.h
+SOURCES += ${APPSRC}/ndsManager.cpp
+HEADERS += ${APPSRC}/ndsManager.h
+SOURCES += ${APPSRC}/ndsMessage.cpp
+HEADERS += ${APPSRC}/ndsMessage.h
+#SOURCES += ${APPSRC}/ndsNDArrayChannel.cpp
+#HEADERS += ${APPSRC}/ndsNDArrayChannel.h
+SOURCES += ${APPSRC}/ndsPeriodicTask.cpp
+HEADERS += ${APPSRC}/ndsPeriodicTask.h
+SOURCES += ${APPSRC}/ndsPollingTask.cpp
+HEADERS += ${APPSRC}/ndsPollingTask.h
+SOURCES += ${APPSRC}/ndsPulse.cpp
+HEADERS += ${APPSRC}/ndsPulse.h
+HEADERS += ${APPSRC}/ndsPVContainer.h
+HEADERS += ${APPSRC}/ndsPV.h
+#HEADERS += ${APPSRC}/ndsRegisterHandlersCaller.hpp
+SOURCES += ${APPSRC}/ndsTaskManager.cpp
+HEADERS += ${APPSRC}/ndsTaskManager.h
+SOURCES += ${APPSRC}/ndsTaskService.cpp
+HEADERS += ${APPSRC}/ndsTaskService.h
+SOURCES += ${APPSRC}/ndsTerminal.cpp
+HEADERS += ${APPSRC}/ndsTerminal.h
+SOURCES += ${APPSRC}/ndsThread.cpp
+HEADERS += ${APPSRC}/ndsThread.h
+SOURCES += ${APPSRC}/ndsThreadTask.cpp
+HEADERS += ${APPSRC}/ndsThreadTask.h
+SOURCES += ${APPSRC}/ndsTimeEvent.cpp
+HEADERS += ${APPSRC}/ndsTimeEvent.h
+SOURCES += ${APPSRC}/ndsTimer.cpp
+HEADERS += ${APPSRC}/ndsTimer.h
+SOURCES += ${APPSRC}/ndsTriggerCondition.cpp
+HEADERS += ${APPSRC}/ndsTriggerCondition.h
+SOURCES += ${APPSRC}/ndsTrigger.cpp
+HEADERS += ${APPSRC}/ndsTrigger.h
+HEADERS += ${APPSRC}/ndsTypeLists.h
+HEADERS += ${APPSRC}/ndsTypes.h
+HEADERS += ${APPSRC}/singleton.h
+SOURCES += ${APPSRC}/utsBufferTools.cpp
+HEADERS += ${APPSRC}/utsBufferTools.h
 
-# HEADERS += $(APPSRC)/sCalcPostfix.h
-# HEADERS += $(APPSRC)/aCalcPostfix.h
-# HEADERS += $(DBDINC_HDRS)
 
-
-# SOURCES += $(APPSRC)/sCalcPostfix.c
-# SOURCES += $(APPSRC)/sCalcPerform.c
-# SOURCES += $(APPSRC)/aCalcPostfix.c
-# SOURCES += $(APPSRC)/aCalcPerform.c
-
-# SOURCES += $(APPSRC)/calcUtil.c
-# SOURCES += $(APPSRC)/myFreeListLib.c
-# SOURCES += $(APPSRC)/devsCalcoutSoft.c
-# SOURCES += $(APPSRC)/devaCalcoutSoft.c
-# SOURCES += $(APPSRC)/subAve.c
-# SOURCES += $(APPSRC)/swaitRecord.c
-# SOURCES += $(APPSRC)/editSseq.st
-# SOURCES += $(APPSRC)/interp.c
-# SOURCES += $(APPSRC)/arrayTest.c
-# SOURCES += $(APPSRC)/aCalcMonitorMem.c
 # # DBDINC_SRCS should be last of the series of SOURCES
 # SOURCES += $(DBDINC_SRCS)
 
@@ -100,7 +170,7 @@ include $(E3_REQUIRE_TOOLS)/driver.makefile
 # USR_CFLAGS   += -DDEBUG_PRINT
 # USR_CPPFLAGS += -DDEBUG_PRINT
 # USR_CPPFLAGS += -DUSE_TYPED_RSET
-# USR_INCLUDES += -I/usr/include/libusb-1.0
+USR_INCLUDES += -I/usr/include/libxml2
 # USR_LDFLAGS += -lusb-1.0
 # USR_LDFLAGS += -L /opt/etherlab/lib
 # USR_LDFLAGS += -lethercat
@@ -108,9 +178,9 @@ include $(E3_REQUIRE_TOOLS)/driver.makefile
 
 ## SYSTEM LIBS 
 ##
-# USR_LIBS += boost_regex
-# USR_LIBS += readline
-# USR_LIBS += xml2
+USR_LIBS += boost_filesystem
+USR_LIBS += curl
+USR_LIBS += xml2
 
 #
 
