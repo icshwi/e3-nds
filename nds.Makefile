@@ -29,6 +29,10 @@
 
 include $(E3_REQUIRE_TOOLS)/driver.makefile
 
+ifneq ($(strip $(ASYN_DEP_VERSION)),)
+asyn_VERSION=$(ASYN_DEP_VERSION)
+endif
+
 APP:=epics-nds/ndsApp
 # APPDB:=$(APP)/Db
 APPSRC:=$(APP)/src
