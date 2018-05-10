@@ -37,9 +37,6 @@ APP:=epics-nds/ndsApp
 # APPDB:=$(APP)/Db
 APPSRC:=$(APP)/src
 
-
-asyn_VERSION:=4270
-
 # Exclude linux-ppc64e6500
 # Our current toolchain doesn't have boost
 # 
