@@ -143,6 +143,7 @@ HEADERS += $(APPSRC)/singleton.h
 SOURCES += $(APPSRC)/utsBufferTools.cpp
 HEADERS += $(APPSRC)/utsBufferTools.h
 
+DBDS += $(APPSRC)/nds.dbd
 
 
 
