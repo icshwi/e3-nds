@@ -1,16 +1,4 @@
-
-e3-nds  
+e3-nds  (deprecated) 
 ======
-ESS Site-specific EPICS module : nds
+ESS Site-specific EPICS module : nds (DO NOT USE)
 
-Debian
-
-```
-libboost-filesystem-dev
-```
-
-CentOS
-
-```
-
-```
