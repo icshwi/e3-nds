@@ -1,0 +1,17 @@
+diff --git epics-nds/ndsApp/src/ndsManager.cpp epics-nds/ndsApp/src/ndsManager.cpp
+index 6168943..8f6ea38 100644
+--- epics-nds/ndsApp/src/ndsManager.cpp
++++ epics-nds/ndsApp/src/ndsManager.cpp
+@@ -175,9 +175,9 @@ ManagerBase::~ManagerBase()
+ 
+ void ManagerBase::ndsAtExit(void *param)
+ {
+-    errlogSevPrintf(
+-        errlogMajor,
+-        "NDS Manager got Exit signal!\n");
++  //    errlogSevPrintf(
++  //        errlogMajor,
++  //        "NDS Manager got Exit signal!\n");
+ 
+ #ifdef SUPPORT_TCN
+     TCN :: getInstance().wakeup();

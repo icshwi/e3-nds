@@ -1,7 +1,6 @@
-# what_ever_filename.p0.patch
+# 2.3.3-suppress-destructor-msg.p0.patch
 
-Generic Description.....
+Suppress the destructor message such as "NDS Manager got Exit signal!"
 
 * created by Jeong Han Lee, han.lee@esss.se
-* related URL or reference https://github.com/icshwi
-* Tuesday, February 13 13:24:57 CET 2018
+* Wednesday, October 10 10:35:23 CEST 2018
