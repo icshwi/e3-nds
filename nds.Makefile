@@ -35,6 +35,7 @@ ifneq ($(strip $(LOKI_DEP_VERSION)),)
 loki_VERSION=$(LOKI_DEP_VERSION)
 endif
 
+# print cc1plus: warning: unrecognized command line option ‘-Wno-format-truncation’ with lower gcc 7
 USR_CFLAGS   += -Wno-format-truncation
 USR_CPPFLAGS += -Wno-format-truncation
 
