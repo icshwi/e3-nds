@@ -1,5 +1,5 @@
 #
-#  Copyright (c) 2018 - Present  European Spallation Source ERIC
+#  Copyright (c) 2018 - 2019      European Spallation Source ERIC
 #
 #  The program is free software: you can redistribute
 #  it and/or modify it under the terms of the GNU General Public License
@@ -19,11 +19,9 @@
 #           Jeong Han Lee
 # email   : joaopaulomartins@esss.se
 #           jeonghan.lee@gmail.com
-# Date    : Thursday, September 13 21:11:34 CEST 2018
-# version : 0.0.1
+# Date    : Tuesday, April  2 15:17:43 CEST 2019
+# version : 0.0.2
 #
-
-
 where_am_I := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 include $(E3_REQUIRE_TOOLS)/driver.makefile
 include $(E3_REQUIRE_CONFIG)/DECOUPLE_FLAGS
@@ -33,13 +31,12 @@ ifneq ($(strip $(ASYN_DEP_VERSION)),)
 asyn_VERSION=$(ASYN_DEP_VERSION)
 endif
 
-
 ifneq ($(strip $(LOKI_DEP_VERSION)),)
 loki_VERSION=$(LOKI_DEP_VERSION)
 endif
 
-
-EXCLUDE_ARCHS += linux-ppc64e6500 
+USR_CFLAGS   += -Wno-format-truncation
+USR_CPPFLAGS += -Wno-format-truncation
 
 
 
@@ -48,18 +45,19 @@ APP:=epics-nds/ndsApp
 # APPDB:=$(APP)/Db
 APPSRC:=$(APP)/src
 
-# Exclude linux-ppc64e6500
-# Our current toolchain doesn't have boost
-# 
-EXCLUDE_ARCHS = linux-ppc64e6500
 
-# USR_INCLUDES += -I$(where_am_I)$(APPSRC)
-
-
+ifeq ($(T_A),linux-ppc64e6500)
+USR_INCLUDES += -I$(SDKTARGETSYSROOT)/usr/include/libxml2
+USR_INCLUDES += -I$(SDKTARGETSYSROOT)/usr/include/boost
+else ifeq ($(T_A),linux-corei7-poky)
+USR_INCLUDES += -I$(SDKTARGETSYSROOT)/usr/include/libxml2
+USR_INCLUDES += -I$(SDKTARGETSYSROOT)/usr/include/boost
+else
 USR_INCLUDES += -I/usr/include/libxml2
+USR_INCLUDES += -I/usr/include/boost
+#USR_INCLUDES += -I/usr/include/x86_64-linux-gnu/curl
+endif
 
-## SYSTEM LIBS 
-##
 USR_LIBS += boost_filesystem
 USR_LIBS += curl
 USR_LIBS += xml2
@@ -158,42 +156,9 @@ DBDS += $(APPSRC)/nds.dbd
 
 
 
-
-## This RULE should be used in case of inflating DB files 
-## db rule is the default in RULES_DB, so add the empty one
-## Please look at e3-mrfioc2 for example.
-
 db: 
 
 .PHONY: db 
-
-# EPICS_BASE_HOST_BIN = $(EPICS_BASE)/bin/$(EPICS_HOST_ARCH)
-# MSI = $(EPICS_BASE_HOST_BIN)/msi
-#
-# USR_DBFLAGS += -I . -I ..
-# USR_DBFLAGS += -I $(EPICS_BASE)/db
-# USR_DBFLAGS += -I $(APPDB)
-#
-# SUBS=$(wildcard $(APPDB)/*.substitutions)
-# TMPS=$(wildcard $(APPDB)/*.template)
-#
-# db: $(SUBS) $(TMPS)
-
-# $(SUBS):
-#	@printf "Inflating database ... %44s >>> %40s \n" "$@" "$(basename $(@)).db"
-#	@rm -f  $(basename $(@)).db.d  $(basename $(@)).db
-#	@$(MSI) -D $(USR_DBFLAGS) -o $(basename $(@)).db -S $@  > $(basename $(@)).db.d
-#	@$(MSI)    $(USR_DBFLAGS) -o $(basename $(@)).db -S $@
-
-# $(TMPS):
-#	@printf "Inflating database ... %44s >>> %40s \n" "$@" "$(basename $(@)).db"
-#	@rm -f  $(basename $(@)).db.d  $(basename $(@)).db
-#	@$(MSI) -D $(USR_DBFLAGS) -o $(basename $(@)).db $@  > $(basename $(@)).db.d
-#	@$(MSI)    $(USR_DBFLAGS) -o $(basename $(@)).db $@
-
-#
-# .PHONY: db $(SUBS) $(TMPS)
-
 
 #
 .PHONY: vlibs

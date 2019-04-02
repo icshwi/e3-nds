@@ -1,0 +1,51 @@
+diff --git epics-nds/ndsApp/src/map_functors.h epics-nds/ndsApp/src/map_functors.h
+index 2cd237c..0ea7162 100644
+--- epics-nds/ndsApp/src/map_functors.h
++++ epics-nds/ndsApp/src/map_functors.h
+@@ -125,9 +125,10 @@ void printStrKey(const T& obj)
+ template <class T>
+ void deleteMapObj(T& obj)
+ {
+-    if (obj.second)
++    if (obj.second) {
+         delete obj.second;
+ 	obj.second = 0;
++    }
+ }
+ 
+ /// @endcond
+diff --git epics-nds/ndsApp/src/ndsFirmware.cpp epics-nds/ndsApp/src/ndsFirmware.cpp
+index 0f03d04..3069f84 100644
+--- epics-nds/ndsApp/src/ndsFirmware.cpp
++++ epics-nds/ndsApp/src/ndsFirmware.cpp
+@@ -65,7 +65,7 @@ ndsStatus nds::Firmware::downloadImage()
+ 	if ( imageAbsPath.empty() )
+ 		return ndsError;
+ 
+-	bool result = download(image, imageAbsPath.c_str() );
++	ndsStatus result = download(image, imageAbsPath.c_str() );
+ 	return (result)?ndsSuccess:ndsError;
+ }
+ 
+@@ -163,7 +163,7 @@ static size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream)
+   return written;
+ }
+ 
+-bool download(const std::string &uri, const std::string &filePath)
++ndsStatus download(const std::string &uri, const std::string &filePath)
+ {
+ 	CURL *curl_handle;
+ 	FILE *file;
+diff --git epics-nds/ndsApp/src/ndsFirmware.h epics-nds/ndsApp/src/ndsFirmware.h
+index aa9263c..cd1e86a 100644
+--- epics-nds/ndsApp/src/ndsFirmware.h
++++ epics-nds/ndsApp/src/ndsFirmware.h
+@@ -85,7 +85,7 @@ public:
+  *@param uri
+  *@param filePath
+  */
+-bool download(const std::string &uri, const std::string &filePath);
++ndsStatus download(const std::string &uri, const std::string &filePath);
+ 
+ 
+ #endif /* NDSFIRMWARE_H_ */
